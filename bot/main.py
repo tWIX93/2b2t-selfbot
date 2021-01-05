@@ -83,7 +83,13 @@ async def prioq (ctx):
     embed.add_field(name="Wait time", value=r.json()[2], )
     await ctx.channel.send(embed=embed)
 
-
+@bot.command()
+async def q (ctx):
+ if ctx.author.id in gods:
+    r = requests.get(f'https://2b2t.io/api/queue')
+    embed = discord.Embed(title="2B2T", description="Queue", color=0x000)
+    embed.add_field(name="Queue", value=r.json()[0][1], )
+    await ctx.channel.send(embed=embed)
 
 
 bot.run(token, bot = False)
