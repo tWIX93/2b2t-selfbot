@@ -16,7 +16,7 @@ async def on_ready():
     print("Loaded")
 
 @bot.command()
-async def que(ctx):
+async def graph(ctx):
  if ctx.author.id in gods:
     options = Options()
     options.add_argument( "--headless" )
@@ -26,7 +26,7 @@ async def que(ctx):
     driver.save_screenshot('test.png')
     driver.quit()
     file = discord.File("test.png")
-    embed = discord.Embed(title="2B2T Queue", url="https://2b2t.io/", description="test", color=0x000)
+    embed = discord.Embed(title="2B2T Queue Graph", url="https://2b2t.io/", description="test", color=0x000)
     embed.set_image(url="attachment://test.png")
     await ctx.send(embed=embed, file=file)
 
@@ -70,6 +70,17 @@ async def status (ctx, ):
     embed.add_field(name="Players", value=r.json()[0][1], )
     embed.add_field(name="Uptime", value=r.json()[0][3], )
     embed.set_image(url= 'https://tab.2b2t.dev/')
+    await ctx.channel.send(embed=embed)
+
+
+
+@bot.command()
+async def prioq (ctx):
+ if ctx.author.id in gods:
+    r = requests.get(f'https://api.2b2t.dev/prioq')
+    embed = discord.Embed(title="2B2T", description="Priority Queue", color=0x000)
+    embed.add_field(name="Queue", value=r.json()[1], )
+    embed.add_field(name="Wait time", value=r.json()[2], )
     await ctx.channel.send(embed=embed)
 
 
