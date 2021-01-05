@@ -6,11 +6,3 @@ Download the geckodriver and put it in a folder and then copy the path of it wit
 
 prefix is .
 
-commands
-
-.status
-.seen PLAYER
-.stats PLAYER
-.que
-
-more to come
